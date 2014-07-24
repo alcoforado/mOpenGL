@@ -1,4 +1,4 @@
-#include "enginegl.h"
+#include "EngineGL.h"
 #include <QStringList>
 
 EngineGL::EngineGL()

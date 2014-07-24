@@ -9,6 +9,12 @@ public:
 
   Vector4();
   Vector4(float a, float b, float c, float d);
+
+  Vector4& operator=(const glm::vec4 &vec)
+  {
+      *this=vec;
+      return *this;
+  }
 };
 
 #endif // VECTOR4_H

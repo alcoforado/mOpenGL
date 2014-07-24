@@ -4,7 +4,10 @@
 
 class Vector3 : public glm::vec3
 {
+    using glm::vec3::vec3;
 public:
+
+  Vector3(float a,float b,float c);
   Vector3();
 };
 

@@ -16,7 +16,7 @@ class ITopology
 public:
     ITopology();
 
-   void WriteTopology(BufferSelect<Vector4> &vertices,IArray<Index> &indices) {throw new EngineException("not Implemented");}
+   void WriteTopology(BufferSelect<Vector4> &vertices,IArray<Index> &indices) {(void)indices;(void)vertices;throw new EngineException("not Implemented");}
    Index nVertices() {throw new EngineException("not Implemented");}
    Index nIndices() {throw new EngineException("not Implemented");}
 

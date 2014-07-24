@@ -7,7 +7,7 @@ class IObservable
     std::list<Subject*>  _listeners;
 public:
     IObservable();
-    Changed()
+    void Changed();
 };
 
 #endif // IOBSERVABLE_H

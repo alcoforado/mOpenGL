@@ -2,14 +2,15 @@
 #include <stddef.h>
 #ifndef IARRAY_H
 #define IARRAY_H
+#include<assert.h>
 template <class OfType>
 class IArray
 {
-    OfType *_ptr;
-    Index _size;
+
 protected:
     IArray(){_ptr=NULL;_size=0;}
-
+    OfType *_ptr;
+    Index _size;
 public:
 
     OfType& operator[](Index i)

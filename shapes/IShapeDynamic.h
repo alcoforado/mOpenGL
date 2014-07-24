@@ -1,10 +1,38 @@
 #ifndef ISHAPEDYNAMIC_H
 #define ISHAPEDYNAMIC_H
+#include <list>
+#include <shapes/IShapeWatcher.h>
 
-class IShapeDynamic
+template<class VertexData>
+class IShapeDynamic : IShape<VertexData>
 {
+    std::list<IShapeWatcher<VertexData>* > _watchers;
 public:
-    IShapeDynamic();
+
+    void TriggerChangedEvent()
+    {
+        for (IShapeWatcher<VertexData>* watcher : _watchers)
+        {
+            watcher->ShapeChanged(this);
+
+        }
+
+    }
+
+    void AddWatcher(IShapeWatcher<VertexData> *watcher)
+    {
+        _watchers.push_back(watcher);
+
+    }
+
+    ~IShapeDynamic()
+    {
+        for (IShapeWatcher<VertexData>* watcher : _watchers)
+        {
+            watcher->ShapeDeleted(this);
+        }
+    }
+
 };
 
 #endif // ISHAPEDYNAMIC_H
