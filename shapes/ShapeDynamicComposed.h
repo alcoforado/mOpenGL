@@ -1,12 +1,15 @@
 #ifndef SHAPECOMPOSED_H
 #define SHAPECOMPOSED_H
 #include <shapes/IShapeDynamic.h>
+#include <utilities/RefArray.h>
 template<class VerticeData>
 class ShapeDynamicComposed  : public IShapeDynamic<VerticeData>
 {
 
-    bool _bNeedFlush;
+
 private:
+
+
 
 
 
@@ -14,16 +17,14 @@ private:
     struct ShapeAllocInfo : IShapeWatcher<VerticeData>
     {
         ShapeDynamicComposed<VerticeData> *_collection;
-        bool _changed;
-        bool _markedForRemoval;
         IShapeDynamic<VerticeData> *_shape;
         int _currNIndices;
         int _currNVertices;
         int _index;
 
+
         virtual void ShapeChanged(IShape<VerticeData> *shape)
         {
-            _changed=true;
 
             _nTotalIndices-=_currNIndices;
             _nTotalVertices-=_currNVertices;
@@ -31,16 +32,16 @@ private:
             _currNVertices=shape->nVertices();
             _nTotalIndices +=_currNIndices;
             _nTotalVertices+=_currNVertices;
+            _collection->TriggerChangedEvent();
 
         }
         virtual void ShapeDeleted(IShape<VerticeData> *shape)
         {
             _collection->RemoveShape(&shape);
+            _collection->TriggerChangedEvent();
         }
     };
 
-
-    std::list<ShapeAllocInfo> _v;
 
     typename std::list<ShapeAllocInfo>::iterator findShape(IShapeDynamic<VerticeData> &shape)
     {
@@ -76,16 +77,23 @@ private:
 
 
      Index _nTotalIndices, _nTotalVertices;
-
-
+     std::list<ShapeAllocInfo> _v;
+     TopologyType _type;
 
 public:
 
     ShapeDynamicComposed(){}
     virtual ~ShapeDynamicComposed(){}
 
+
+    virtual TopologyType GetTopologyType(){return _type;}
+
     void AddShape(IShapeDynamic<VerticeData> &shape)
     {
+        if (_v.empty())
+            _type=shape.GetTopologyType();
+        assert(_type == shape.GetTopologytype());
+
         //create a  ShapeInfo entry in the list
         _v.push_back(ShapeAllocInfo());
 
@@ -94,15 +102,16 @@ public:
         info._index = _v.size();
         info._currNIndices = shape->NIndices();
         info._currNVertices = shape->NVertices();
-        info._changed=true;
-        info._markedForRemoval=false;
         info._shape = &shape;
-        info._shape->AddWatcher(this);
+        info._shape->AddWatcher(&info);
 
         _nTotalIndices +=info._currNIndices;
         _nTotalVertices+=info._currNVertices;
+        this->TriggerChangeEvent();
 
     }
+
+
 
     void RemoveShape(IShapeDynamic<VerticeData> &shape)
     {
@@ -114,12 +123,38 @@ public:
             _nTotalVertices-=it->_currNVertices;
             _nTotalIndices-=it->_currNIndices;
             _v.erase(it);
+            this->TriggerChangedEvent();
         }
+
     }
 
-    virtual void write(IArray<VerticeData> &vertices, IArray<int> &indices)
+    virtual void Write(IArray<VerticeData> &vertices, IArray<int> &indices)
     {
+        unsigned nVerts  = this->nVertices();
+        unsigned nIndices= this->nIndices();
 
+
+      assert(nVerts <= vertices.size() );
+      assert(nIndices <= indices.size());
+
+       unsigned _offV=0;
+       unsigned _offI=0;
+       for(ShapeAllocInfo& info : _v)
+        {
+           Index lV = info._shape->nVertices();
+           Index lI = info->_shape->nIndices();
+           RefArray<VerticeData> vV(vertices,_offV,lV);
+           RefArray<Index> vI(indices,_offI,lI);
+           info->_shape->write(vV,vI);
+
+           //Correct the indices
+           for(int i=0;i<vI.size();i++)
+            indices[i]+=_offI;
+
+           _offV+=lV;
+           _offI+=lI;
+
+        }
     }
 
 

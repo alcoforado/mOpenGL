@@ -77,13 +77,12 @@ public:
 
     virtual unsigned nVertices()
     {
-            unsigned acum=0;
-            for(IShape<VerticeData>* shape : _v)
-            {
-                acum+=shape->nVertices();
-            }
-            return acum;
-
+        unsigned acum=0;
+        for(IShape<VerticeData>* shape : _v)
+        {
+            acum+=shape->nVertices();
+        }
+        return acum;
    }
 
 
@@ -122,6 +121,7 @@ public:
         {
             delete ptr;
         }
+
     }
 
 

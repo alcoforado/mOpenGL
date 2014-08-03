@@ -1,10 +1,24 @@
 #ifndef SHAPESMNGR_H
 #define SHAPESMNGR_H
+#include "ShapeBatch.h"
 
-class ShapesMngr
+template<class VerticeData>
+class BuffersMngr
 {
+    struct Buffer
+    {
+        std::vector<ShapeBatch<VerticeData> > _batches;
+       // std::vector<
+
+    };
+
+
 public:
-    ShapesMngr();
+
+
+
+    BuffersMngr();
+
 };
 
 #endif // SHAPESMNGR_H

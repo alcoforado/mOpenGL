@@ -37,7 +37,14 @@ SOURCES += main.cpp\
     utilities/IObservable.cpp \
     shapes/IShapeDynamic.cpp \
     shapes/Vector3.cpp \
-    shapes/DynamicShapeComposed.cpp
+    shapes/DynamicShapeComposed.cpp \
+    shapes/ShapeRoot.cpp \
+    SphericMovement.cpp \
+    shapes/ITopology2D.cpp \
+    shapes/Vector2.cpp \
+    shapes/ShapeBatch.cpp \
+    utilities/regionarray.cpp \
+    shapes/ShapesMngr.cpp
 
 HEADERS  += \
     shapes/Rectangle3D.h \
@@ -48,7 +55,6 @@ HEADERS  += \
     shapes/Triangle.h \
     shapes/ShapeBindInfo.h \
     shapes/SubVector.h \
-    shaders/ColorShader.h \
     EngineGL.h \
     WindowGL.h \
     MainWindow.h \
@@ -69,7 +75,15 @@ HEADERS  += \
     shapes/IShapeDynamic.h \
     shapes/IShapeWatcher.h \
     shapes/ShapeSimpleComposed.h \
-    shapes/ShapeDynamicComposed.h
+    shapes/ShapeDynamicComposed.h \
+    shapes/ShapeRoot.h \
+    SphericMovement.h \
+    shaders/ColorShader2D.h \
+    shapes/ITopology2D.h \
+    shapes/Vector2.h \
+    shapes/ShapeBatch.h \
+    utilities/regionarray.h \
+    shapes/ShapesMngr.h
 
 FORMS    += mainwindow.ui
 
