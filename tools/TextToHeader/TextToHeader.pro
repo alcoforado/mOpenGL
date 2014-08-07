@@ -11,12 +11,14 @@ QT       -= gui
 TARGET = TextToHeader
 CONFIG   += console
 CONFIG   -= app_bundle
+LIBS += -lshared
+LIBPATH +=../../shared
 
 TEMPLATE = app
 
 
-SOURCES += main.cpp \
-    Path.cpp
+SOURCES += main.cpp
 
-HEADERS += \
-    Path.h
+
+
+
