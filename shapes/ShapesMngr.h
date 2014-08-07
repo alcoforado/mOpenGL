@@ -5,19 +5,27 @@
 template<class VerticeData>
 class BuffersMngr
 {
-    struct Buffer
+    class Buffer
     {
-        std::vector<ShapeBatch<VerticeData> > _batches;
-       // std::vector<
-
+        std::vector<ShapeBatch<VerticeData> > Batch;
+        std::vector<VerticeData> _vertices;
+        std::vector<Index>       _indices;
     };
 
-
+    std::vector<Buffer> _buffers;
 public:
 
+    BuffersMngr(){}
+
+    BuffersMngr(int nBuffers)
+    {
+        _buffers.resize(nBuffers);
+    }
+
+    //GetBatch(int bufferNumber,)
 
 
-    BuffersMngr();
+
 
 };
 

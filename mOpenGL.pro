@@ -26,7 +26,6 @@ SOURCES += main.cpp\
     shapes/Rectangle3D.cpp \
     shapes/Triangle.cpp \
     shapes/Vector4.cpp \
-    shaders/ColorShader.cpp \
     EngineGL.cpp \
     MainWindow.cpp \
     WindowGL.cpp \
@@ -44,7 +43,8 @@ SOURCES += main.cpp\
     shapes/Vector2.cpp \
     shapes/ShapeBatch.cpp \
     utilities/regionarray.cpp \
-    shapes/ShapesMngr.cpp
+    shapes/ShapesMngr.cpp \
+    shaders/ColorShader2D.cpp
 
 HEADERS  += \
     shapes/Rectangle3D.h \
@@ -88,3 +88,9 @@ HEADERS  += \
 FORMS    += mainwindow.ui
 
 INCLUDEPATH+=./
+
+SUBDIRS=Tools/TextToHeader
+
+OTHER_FILES += \
+    GLSL/Color2D.frag \
+    GLSL/Color2D.vsh

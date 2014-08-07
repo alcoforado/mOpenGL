@@ -19,6 +19,8 @@ public:
         return _ptr[i];
     }
     Index size() {return _size;}
+
+    OfType* GetPointer(){return _ptr;}
 };
 
 #endif // IARRAY_H

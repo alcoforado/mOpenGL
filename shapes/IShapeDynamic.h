@@ -4,8 +4,9 @@
 #include <shapes/IShapeWatcher.h>
 
 template<class VertexData>
-class IShapeDynamic : IShape<VertexData>
+class IShapeDynamic : public IShape<VertexData>
 {
+protected:
     std::list<IShapeWatcher<VertexData>* > _watchers;
 public:
 

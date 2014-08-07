@@ -149,7 +149,7 @@ public:
 
            //Correct the indices
            for(int i=0;i<vI.size();i++)
-            indices[i]+=_offI;
+            indices[i]+=_offV;
 
            _offV+=lV;
            _offI+=lI;
