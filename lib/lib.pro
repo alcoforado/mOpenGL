@@ -29,18 +29,15 @@ QMAKE_CXXFLAGS += -std=c++0x
 SOURCES += main.cpp\
     shapes/Rectangle3D.cpp \
     shapes/Triangle.cpp \
-    shapes/Vector4.cpp \
     MainWindow.cpp \
     WindowGL.cpp \
     utilities/RefArray.cpp \
     shapes/ITopology.cpp \
     utilities/EngineException.cpp \
     utilities/IObservable.cpp \
-    shapes/Vector3.cpp \
     shapes/DynamicShapeComposed.cpp \
     shapes/ShapeRoot.cpp \
     SphericMovement.cpp \
-    shapes/Vector2.cpp \
     utilities/regionarray.cpp \
     shaders/ColorShader2D.cpp \
     shaders/GLProgram.cpp \
@@ -53,17 +50,17 @@ SOURCES += main.cpp\
     framework/GLProgram.cpp \
     framework/VertexArrayAttribute.cpp \
     framework/IMaterial.cpp \
-    framework/ShapeBatch.cpp
+    framework/ShapeBatch.cpp \
+    framework/Vector2.cpp \
+    framework/Vector3.cpp \
+    framework/Vector4.cpp
 
 HEADERS  += \
     shapes/Rectangle3D.h \
     globals.h \
-    shapes/Vector4.h \
-    shapes/Vector3.h \
     shapes/Triangle.h \
     WindowGL.h \
     MainWindow.h \
-    shapes/Vector3.h \
     ArrayColorMap.h \
     Camera.h \
     ICamera.h \
@@ -79,7 +76,6 @@ HEADERS  += \
     shapes/ShapeRoot.h \
     SphericMovement.h \
     shaders/ColorShader2D.h \
-    shapes/Vector2.h \
     utilities/regionarray.h \
     GL.h \
     shapes2D/ITopology2D.h \
@@ -94,7 +90,10 @@ HEADERS  += \
     framework/IMaterial.h \
     framework/IShape.h \
     framework/IShapeWatcher.h \
-    framework/ShapeBatch.h
+    framework/ShapeBatch.h \
+    framework/Vector2.h \
+    framework/Vector3.h \
+    framework/Vector4.h
 
 
 FORMS    += mainwindow.ui
