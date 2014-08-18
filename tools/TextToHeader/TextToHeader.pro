@@ -11,7 +11,7 @@ QT       -= gui
 TARGET = TextToHeader
 CONFIG   += console
 CONFIG   -= app_bundle
-LIBS += -lshared
+LIBS += -Wl,-rpath ../../shared  -lshared
 LIBPATH +=../../shared
 
 TEMPLATE = app

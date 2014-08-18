@@ -9,6 +9,13 @@ public:
 
   Vector2(float a,float b);
   Vector2();
+  void operator=(const glm::vec2& v2)
+  {
+      glm::vec2 *base = this;
+      *base=v2;
+  }
+
+
 };
 
 

@@ -1,13 +1,13 @@
-#include "EngineGL.h"
+#include "GL.h"
 #include <QStringList>
-
-EngineGL::EngineGL()
+#include <assert.h>
+GL::GL()
 {
 
 }
 
 
- QString EngineGL::getOpenGLInfo()
+ QString GL::getOpenGLInfo()
  {
     GLint nE=0;
 
@@ -25,7 +25,6 @@ EngineGL::EngineGL()
 
 
      }
-
    return QString("OpenGL Info:\nVersion: %1\nVendor:           %2\nRender:           %3\nShading Language: %4\nExtensions:\n%5").arg(strVersion,strVendor,strRender,strShadingLanguage,ext);
 
 
@@ -34,4 +33,13 @@ EngineGL::EngineGL()
 
 
 
-}
+ }
+
+ void GL::testOpenGLCompatibility()
+ {
+     GLboolean b;
+     this->glGetBooleanv(GL_SHADER_COMPILER,&b);
+     assert(b == GL_TRUE);
+     assert(sizeof(char) == sizeof(GLchar));
+
+ }

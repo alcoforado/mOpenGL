@@ -234,11 +234,12 @@ public:
 
     void AddShape(IShapeDynamic<VerticeData> *shape)
     {
+        assert(dynamic_cast<ShapeBatch<VerticeData>*>(shape)==nullptr);
         CheckShapeTopologyType(shape);
 
 
 
-        _bNeedFlush=true;
+
 
         //create a  ShapeInfo entry in the list
         _v.push_back(ShapeAllocInfo());
@@ -253,6 +254,7 @@ public:
         info._root = this;
         info._shape->AddWatcher(&info);
         this->_bNeedResize=true;
+        _bNeedFlush=true;
     }
 
 
@@ -367,7 +369,7 @@ public:
 
            }
             _bNeedFlush=false;
-
+            _bNeedResize=false;
 
         }
 

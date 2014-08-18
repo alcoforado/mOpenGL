@@ -2,11 +2,11 @@
 #define IMATERIAL_H
 
 
-template<class Shader>
+template<class VerticeData>
 class IMaterial
 {
 public:
-    virtual void write(IArray<Shader::VerticeData> &array)=0;
+    virtual void write(IArray<VerticeData> &array)=0;
 
 };
 

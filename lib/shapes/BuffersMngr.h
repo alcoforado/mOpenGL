@@ -1,16 +1,12 @@
 #ifndef SHAPESMNGR_H
 #define SHAPESMNGR_H
 #include "ShapeBatch.h"
-
+#include <GL.h>
+#include <shaders/VertexArrayAttribute.h>
 template<class VerticeData>
 class BuffersMngr
 {
-    class Buffer
-    {
-        std::vector<ShapeBatch<VerticeData> > Batch;
-        std::vector<VerticeData> _vertices;
-        std::vector<Index>       _indices;
-    };
+
 
     std::vector<Buffer> _buffers;
 public:

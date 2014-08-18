@@ -2,7 +2,7 @@
 #define WINDOWGL_H
 
 #include <QWindow>
-#include "EngineGL.h"
+#include <GL.h>
 class WindowGL : public QWindow
 {
   Q_OBJECT
@@ -15,7 +15,7 @@ public:
   WindowGL(QWindow *parent,QSurfaceFormat format);
   ~WindowGL(){}
   virtual void render();
-  EngineGL engine;
+  GL engine;
  public slots:
 
 

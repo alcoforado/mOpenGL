@@ -12,7 +12,11 @@ QT       += core gui
 INCLUDEPATH+=./references/glm
 INCLUDEPATH+=../
 INCLUDEPATH+=./shapes
+INCLUDEPATH+=$$PWD/../shared
+INCLUDEPATH+=$$PWD/shapes2D
 
+LIBS += -Wl,-rpath $$PWD/../shared  -lshared
+LIBPATH += $$PWD/../shared
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,36 +30,37 @@ SOURCES += main.cpp\
     shapes/Rectangle3D.cpp \
     shapes/Triangle.cpp \
     shapes/Vector4.cpp \
-    EngineGL.cpp \
     MainWindow.cpp \
     WindowGL.cpp \
     utilities/RefArray.cpp \
     shapes/ITopology.cpp \
     utilities/EngineException.cpp \
-    shapes/IMaterial.cpp \
     utilities/IObservable.cpp \
-    shapes/IShapeDynamic.cpp \
     shapes/Vector3.cpp \
     shapes/DynamicShapeComposed.cpp \
     shapes/ShapeRoot.cpp \
     SphericMovement.cpp \
-    shapes/ITopology2D.cpp \
     shapes/Vector2.cpp \
-    shapes/ShapeBatch.cpp \
     utilities/regionarray.cpp \
-    shapes/ShapesMngr.cpp \
-    shaders/ColorShader2D.cpp
+    shaders/ColorShader2D.cpp \
+    shaders/GLProgram.cpp \
+    GL.cpp \
+    shapes2D/ITopology2D.cpp \
+    shapes2D/Rect2D.cpp \
+    shapes2D/Shape2D.cpp \
+    shaders/VertexArrayAttribute.cpp \
+    framework/GLBuffer.cpp \
+    framework/GLProgram.cpp \
+    framework/VertexArrayAttribute.cpp \
+    framework/IMaterial.cpp \
+    framework/ShapeBatch.cpp
 
 HEADERS  += \
     shapes/Rectangle3D.h \
-    shapes/BufferSelect.h \
     globals.h \
     shapes/Vector4.h \
     shapes/Vector3.h \
     shapes/Triangle.h \
-    shapes/ShapeBindInfo.h \
-    shapes/SubVector.h \
-    EngineGL.h \
     WindowGL.h \
     MainWindow.h \
     shapes/Vector3.h \
@@ -63,34 +68,52 @@ HEADERS  += \
     Camera.h \
     ICamera.h \
     opointer.h \
-    ui_mainwindow.h \
     utilities/RefArray.h \
     shapes/ITopology.h \
     utilities/EngineException.h \
-    shapes/IShape.h \
     shapes/Shape.h \
     utilities/IArray.h \
-    shapes/IMaterial.h \
     utilities/IObservable.h \
-    shapes/IShapeDynamic.h \
-    shapes/IShapeWatcher.h \
     shapes/ShapeSimpleComposed.h \
     shapes/ShapeDynamicComposed.h \
     shapes/ShapeRoot.h \
     SphericMovement.h \
     shaders/ColorShader2D.h \
-    shapes/ITopology2D.h \
     shapes/Vector2.h \
-    shapes/ShapeBatch.h \
     utilities/regionarray.h \
-    shapes/ShapesMngr.h
+    GL.h \
+    shapes2D/ITopology2D.h \
+    shapes2D/Rect2D.h \
+    shapes2D/Shape2D.h \
+    shapes/BuffersMngr.h \
+    framework/GLBuffer.h \
+    framework/GLProgram.h \
+    framework/VertexArrayAttribute.h \
+    utilities/BufferSelect.h \
+    utilities/SubVector.h \
+    framework/IMaterial.h \
+    framework/IShape.h \
+    framework/IShapeWatcher.h \
+    framework/ShapeBatch.h
+
 
 FORMS    += mainwindow.ui
 
 INCLUDEPATH+=./
 
-SUBDIRS=Tools/TextToHeader
+
+
+glsl.target = .buildfile.h
+glsl.commands= cd $$PWD/glsl;make
+glsl.depends= FORCE
+QMAKE_EXTRA_TARGETS+= glsl
+PRE_TARGETDEPS+=.buildfile.h
+
+
+
 
 OTHER_FILES += \
     glsl/Color2D.frag \
-    glsl/Color2D.vsh
+    glsl/Color2D.vsh \
+    glsl/Color2D_PS.glsl \
+    glsl/Color2D_VS.glsl

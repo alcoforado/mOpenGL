@@ -3,7 +3,7 @@
 #include <QApplication>
 #include <QWindow>
 #include "WindowGL.h"
-#include "EngineGL.h"
+#include <GL.h>
 #include <QDebug>
 #include <QTime>
 #include <QMessageBox>
