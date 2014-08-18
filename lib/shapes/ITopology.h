@@ -1,12 +1,12 @@
 #ifndef ITOPOLOGY_H
 #define ITOPOLOGY_H
 
-#include "BufferSelect.h"
-#include "Vector4.h"
+#include <framework/Vector4.h>
+#include <utilities/BufferSelect.h>
 #include <utilities/IArray.h>
 #include <globals.h>
 #include <utilities/EngineException.h>
-#include "IShape.h"
+#include <framework/IShape.h>
 /**
  * @brief The ITopology class responsible to write the topology of the shape.
  *       Although this class defines its methods as virtual, they almost never

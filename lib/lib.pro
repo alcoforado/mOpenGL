@@ -40,12 +40,10 @@ SOURCES += main.cpp\
     SphericMovement.cpp \
     utilities/regionarray.cpp \
     shaders/ColorShader2D.cpp \
-    shaders/GLProgram.cpp \
     GL.cpp \
     shapes2D/ITopology2D.cpp \
     shapes2D/Rect2D.cpp \
     shapes2D/Shape2D.cpp \
-    shaders/VertexArrayAttribute.cpp \
     framework/GLBuffer.cpp \
     framework/GLProgram.cpp \
     framework/VertexArrayAttribute.cpp \
@@ -81,7 +79,6 @@ HEADERS  += \
     shapes2D/ITopology2D.h \
     shapes2D/Rect2D.h \
     shapes2D/Shape2D.h \
-    shapes/BuffersMngr.h \
     framework/GLBuffer.h \
     framework/GLProgram.h \
     framework/VertexArrayAttribute.h \
@@ -93,7 +90,8 @@ HEADERS  += \
     framework/ShapeBatch.h \
     framework/Vector2.h \
     framework/Vector3.h \
-    framework/Vector4.h
+    framework/Vector4.h \
+    framework/BuffersMngr.h
 
 
 FORMS    += mainwindow.ui

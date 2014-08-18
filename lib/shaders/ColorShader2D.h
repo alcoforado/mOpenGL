@@ -4,10 +4,9 @@
 //#include "VectorFunction4x4.h"
 #include <QOpenGLContext>
 #include <GL.h>
-#include <Vector4.h>
-#include <Vector2.h>
-#include <shapes/ShapesMngr.h>
-#include <shaders/GLProgram.h>
+#include <framework/Vector4.h>
+#include <framework/Vector2.h>
+#include <framework/GLProgram.h>
 
 
 class ColorShader2D

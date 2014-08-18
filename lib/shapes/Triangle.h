@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <shapes/ITopology.h>
-#include <shapes/Vector3.h>
+#include <framework/Vector3.h>
 class Triangle : ITopology
 {
     Vector3 _data[3];

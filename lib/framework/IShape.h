@@ -5,6 +5,7 @@
 #include <utilities/EngineException.h>
 #include <utilities/IArray.h>
 #include <list>
+#include <framework/IShapeWatcher.h>
 
 enum TopologyType {POINTS,TRIANGLES,LINES,MIXED,EMPTY};
 

@@ -1,9 +1,9 @@
 #ifndef SHAPECOMPOSED_H
 #define SHAPECOMPOSED_H
-#include <shapes/IShapeDynamic.h>
+#include <framework/IShape.h>
 #include <utilities/RefArray.h>
 template<class VerticeData>
-class ShapeDynamicComposed  : public IShapeDynamic<VerticeData>
+class ShapeDynamicComposed  : public IShape<VerticeData>
 {
 
 
@@ -17,7 +17,7 @@ private:
     struct ShapeAllocInfo : IShapeWatcher<VerticeData>
     {
         ShapeDynamicComposed<VerticeData> *_collection;
-        IShapeDynamic<VerticeData> *_shape;
+        IShape<VerticeData> *_shape;
         int _currNIndices;
         int _currNVertices;
         int _index;
@@ -43,7 +43,7 @@ private:
     };
 
 
-    typename std::list<ShapeAllocInfo>::iterator findShape(IShapeDynamic<VerticeData> &shape)
+    typename std::list<ShapeAllocInfo>::iterator findShape(IShape<VerticeData> &shape)
     {
         for (auto it = _v.begin();it!=_v.end();it++)
         {
@@ -88,7 +88,7 @@ public:
 
     virtual TopologyType GetTopologyType(){return _type;}
 
-    void AddShape(IShapeDynamic<VerticeData> &shape)
+    void AddShape(IShape<VerticeData> &shape)
     {
         if (_v.empty())
             _type=shape.GetTopologyType();
@@ -113,7 +113,7 @@ public:
 
 
 
-    void RemoveShape(IShapeDynamic<VerticeData> &shape)
+    void RemoveShape(IShape<VerticeData> &shape)
     {
         //find the shape and flag it for removal
         auto it  = this->findShape(shape);

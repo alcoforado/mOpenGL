@@ -1,10 +1,10 @@
 #ifndef SHAPEROOT_H
 #define SHAPEROOT_H
 
-#include <shapes/IShapeDynamic.h>
+#include <framework/IShape.h>
 #include <utilities/RefArray.h>
 #include <vector>
-#include "ShapeBatch.h"
+#include <framework/ShapeBatch.h>
 /** A shape root is a shape batch that is the lonly owner of a Buffer of primitives
  *
  */
@@ -54,7 +54,7 @@ private:
 
     std::list<ShapeAllocInfo> _v;
 
-    typename std::list<ShapeAllocInfo>::iterator findShape(IShapeDynamic<VerticeData> *shape)
+    typename std::list<ShapeAllocInfo>::iterator findShape(IShape<VerticeData> *shape)
     {
         for (auto it = _v.begin();it!=_v.end();it++)
         {
@@ -105,12 +105,12 @@ public:
     ShapeRoot(){}
     virtual ~ShapeRoot(){}
 
-    void AddShape(IShapeDynamic<VerticeData> &shape)
+    void AddShape(IShape<VerticeData> &shape)
     {
         _batch.AddShape(shape);
     }
 
-    void RemoveShape(IShapeDynamic<VerticeData> *shape)
+    void RemoveShape(IShape<VerticeData> *shape)
     {
         _batch.RemoveShape(shape);
     }

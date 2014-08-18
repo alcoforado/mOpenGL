@@ -1,7 +1,8 @@
 #ifndef ISHAPEWATCHER_H
 #define ISHAPEWATCHER_H
 
-#include <shapes/IShape.h>
+template<class VertexData>
+class IShape;
 
 template<class VertexData>
 class IShapeWatcher

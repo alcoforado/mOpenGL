@@ -1,6 +1,6 @@
 #pragma once
-#include <Vector4.h>
-#include <Vector3.h>
+#include <framework/Vector4.h>
+#include <framework/Vector3.h>
 #include <shapes/ITopology.h>
 class Rectangle3D : public ITopology
 {

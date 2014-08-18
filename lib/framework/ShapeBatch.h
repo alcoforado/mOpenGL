@@ -2,7 +2,7 @@
 #define SHAPEBATCH_H
 
 
-#include <shapes/IShapeDynamic.h>
+#include <framework/IShape.h>
 #include <utilities/RefArray.h>
 #include <utilities/EngineException.h>
 #include <vector>
@@ -12,7 +12,7 @@
  * It is designed to uniquely be  associated with one buffer.
  */
 template<class VerticeData>
-class ShapeBatch : public IShapeDynamic<VerticeData>
+class ShapeBatch : public IShape<VerticeData>
 {
 
     bool _bNeedFlush;
@@ -35,7 +35,7 @@ private:
         int _offI;
         int _offV;
         ShapeStatus _status;
-        IShapeDynamic<VerticeData>   *_shape;
+        IShape<VerticeData>   *_shape;
         bool IsBatch;
 
         ShapeAllocInfo()
@@ -70,7 +70,7 @@ private:
 
     std::list<ShapeAllocInfo> _v;
 
-    typename std::list<ShapeAllocInfo>::iterator findShape(IShapeDynamic<VerticeData> *shape)
+    typename std::list<ShapeAllocInfo>::iterator findShape(IShape<VerticeData> *shape)
     {
         assert(shape);
         for (auto it = _v.begin();it!=_v.end();it++)
@@ -136,7 +136,7 @@ private:
         return type;
     }
 
-    void CheckShapeTopologyType(IShapeDynamic<VerticeData> *shape)
+    void CheckShapeTopologyType(IShape<VerticeData> *shape)
     {
         //Check the type
         if (_bFixedType)
@@ -232,7 +232,7 @@ public:
         return _bNeedResize();
     }
 
-    void AddShape(IShapeDynamic<VerticeData> *shape)
+    void AddShape(IShape<VerticeData> *shape)
     {
         assert(dynamic_cast<ShapeBatch<VerticeData>*>(shape)==nullptr);
         CheckShapeTopologyType(shape);
@@ -260,14 +260,14 @@ public:
 
     void AddBatch(ShapeBatch<VerticeData> &batch)
     {
-        this->AddBach((IShapeDynamic<VerticeData>*) batch);
+        this->AddBach((IShape<VerticeData>*) batch);
         _v.back().IsBatch=batch;
     }
 
 
 
 
-    void RemoveShape(IShapeDynamic<VerticeData> *shape)
+    void RemoveShape(IShape<VerticeData> *shape)
     {
         //find the shape and flag it for removal
         auto it  = this->findShape(shape);

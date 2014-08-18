@@ -3,7 +3,7 @@
 #include <string>
 #include <qopenglfunctions_4_1_core.h>
 #include <GL.h>
-#include <shaders/VertexArrayAttribute.h>
+#include <framework/VertexArrayAttribute.h>
 #include <vector>
 class GLProgram
 {
