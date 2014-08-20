@@ -24,7 +24,7 @@ public:
 
 
 
-    void TriggerChangedEvent() final
+    virtual void TriggerChangedEvent() final
     {
         for (IShapeWatcher<VertexData>* watcher : _watchers)
         {
@@ -33,7 +33,7 @@ public:
         }
     }
 
-    void AddWatcher(IShapeWatcher<VertexData> *watcher) final
+    virtual void AddWatcher(IShapeWatcher<VertexData> *watcher) final
     {
         _watchers.push_back(watcher);
     }

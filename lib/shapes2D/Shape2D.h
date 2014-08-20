@@ -1,11 +1,10 @@
 #ifndef SHAPE2D_H
 #define SHAPE2D_H
-#include <Vector2.h>
 #include <type_traits>
 #include <ITopology2D.h>
-#include <IShape.h>
-#include <IMaterial.h>
-
+#include <framework/IShape.h>
+#include <framework/IMaterial.h>
+#include <framework/Vector2.h>
 template<class VerticeData,
          class Topology2D=ITopology2D<VerticeData>,
          class Material=IMaterial<VerticeData>>

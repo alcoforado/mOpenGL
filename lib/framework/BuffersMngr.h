@@ -2,17 +2,18 @@
 #define SHAPESMNGR_H
 #include <framework/ShapeBatch.h>
 #include <GL.h>
-#include <framework/BuffersMngr.h>
+#include <framework/GLBuffer.h>
 #include <vector>
+#include <framework/GLBuffer.h>
 template<class VerticeData>
-class BuffersMngr : public std::vector<Buffer>
+class BuffersMngr : public std::vector<GLBuffer<VerticeData>>
 {
 
 
 
 public:
 
-    BuffersMngr(){}
+
 
 
 

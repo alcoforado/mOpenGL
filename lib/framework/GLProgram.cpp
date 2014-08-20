@@ -31,11 +31,6 @@ GLProgram::GLProgram(GL &gl,std::string VertexShaderText,std::string FragShaderT
         }
     }
 
-    if (_gl.gl)
-    {
-
-
-    }
 
 
 

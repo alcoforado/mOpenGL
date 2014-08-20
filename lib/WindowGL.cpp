@@ -1,6 +1,7 @@
 #include "WindowGL.h"
 #include <QOpenGLContext>
 #include <QDebug>
+
 WindowGL::WindowGL(QWindow *parent, QSurfaceFormat format)
   :QWindow(parent)
 {

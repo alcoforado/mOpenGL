@@ -62,7 +62,6 @@ HEADERS  += \
     ArrayColorMap.h \
     Camera.h \
     ICamera.h \
-    opointer.h \
     utilities/RefArray.h \
     shapes/ITopology.h \
     utilities/EngineException.h \
@@ -91,7 +90,8 @@ HEADERS  += \
     framework/Vector2.h \
     framework/Vector3.h \
     framework/Vector4.h \
-    framework/BuffersMngr.h
+    framework/BuffersMngr.h \
+    utilities/opointer.h
 
 
 FORMS    += mainwindow.ui

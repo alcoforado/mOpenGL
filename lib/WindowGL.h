@@ -3,13 +3,15 @@
 
 #include <QWindow>
 #include <GL.h>
+#include <shaders/ColorShader2D.h>
+
 class WindowGL : public QWindow
 {
   Q_OBJECT
 
 
 
-
+    OPointer<ColorShader2D> *op;
 
 public:
   WindowGL(QWindow *parent,QSurfaceFormat format);

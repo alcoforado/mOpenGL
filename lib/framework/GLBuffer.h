@@ -4,7 +4,7 @@
 #include <GL.h>
 #include <framework/VertexArrayAttribute.h>
 
-
+template<class VerticeData>
 class GLBuffer
 {
 private:
@@ -46,7 +46,7 @@ public:
 
         _accessHint = hint;
         _gl.glGenVertexArrays(1,&_glVertexArray);
-        _gl.glBindVertexArray(glVertexArray);
+        _gl.glBindVertexArray(_glVertexArray);
         _gl.glGenBuffers(1,&_glBufferV);
         _gl.glGenBuffers(1,&_glBufferI);
         _gl.glBindBuffer(GL_ARRAY_BUFFER,_glBufferV);
@@ -59,7 +59,7 @@ public:
                                       GL_FLOAT,
                                       false,
                                       sizeof(VerticeData),
-                                      _attribs[i].getStructOffset());
+                                      (GLvoid*) _attribs[i].getStructOffset());
             _gl.glEnableVertexAttribArray(i);
         }
         _glSizeV=_glSizeI=0;

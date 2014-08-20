@@ -7,6 +7,7 @@
 #include <framework/Vector4.h>
 #include <framework/Vector2.h>
 #include <framework/GLProgram.h>
+#include <framework/BuffersMngr.h>
 
 
 class ColorShader2D
