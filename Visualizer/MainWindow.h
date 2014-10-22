@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <iostream>
 namespace Ui {
 class MainWindow;
 }
@@ -10,6 +10,12 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+public slots:
+    void on_actionOne_triggered() {
+        std::cout << "Hellolllllll" << std::endl;
+
+    }
 
 public:
     explicit MainWindow(QWidget *parent = 0);

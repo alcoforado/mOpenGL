@@ -29,10 +29,10 @@ void WindowGL::render()
   if (isExposed())
     {
 
-    glClear(GL_COLOR_BUFFER_BIT);
-    m_context->makeCurrent(this);
-    glFlush();
-    m_context->swapBuffers(this);
+      glClear(GL_COLOR_BUFFER_BIT);
+      m_context->makeCurrent(this);
+      glFlush();
+      m_context->swapBuffers(this);
 
     }
  //Debug() << "Render Called \n";

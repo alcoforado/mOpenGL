@@ -4,7 +4,7 @@
 #include <QWindow>
 #include <framework/GL.h>
 #include <shaders/ColorShader2D.h>
-#include <utilities/opointer.h>
+#include <shared/opointer.h>
 #include <memory>
 class WindowGL : public QWindow
 {
