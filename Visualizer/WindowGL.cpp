@@ -13,20 +13,26 @@ WindowGL::WindowGL(QWindow *parent, QSurfaceFormat format)
   this->create();
   m_context->create();
   m_context->makeCurrent(this);
-  engine.setOpenGLContext(m_context);
+  pEngine.reset(new GL(m_context));
+
+  pShader.reset(new ColorShader2D(*pEngine));
+
+
 
 }
+
+
 
 void WindowGL::render()
 {
 
   if (isExposed())
     {
-   qDebug() << engine.getOpenGLInfo();
-  glClear(GL_COLOR_BUFFER_BIT);
-  m_context->makeCurrent(this);
-  glFlush();
-  m_context->swapBuffers(this);
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    m_context->makeCurrent(this);
+    glFlush();
+    m_context->swapBuffers(this);
 
     }
  //Debug() << "Render Called \n";

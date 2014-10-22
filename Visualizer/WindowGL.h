@@ -2,22 +2,24 @@
 #define WINDOWGL_H
 
 #include <QWindow>
-#include <GL.h>
+#include <framework/GL.h>
 #include <shaders/ColorShader2D.h>
-
+#include <utilities/opointer.h>
+#include <memory>
 class WindowGL : public QWindow
 {
   Q_OBJECT
+    std::unique_ptr<GL> pEngine;
 
 
-
-    OPointer<ColorShader2D> *op;
+    std::unique_ptr<ColorShader2D> pShader;
 
 public:
   WindowGL(QWindow *parent,QSurfaceFormat format);
   ~WindowGL(){}
   virtual void render();
-  GL engine;
+  GL& GetOpenGLContext(){return *pEngine;}
+
  public slots:
 
 

@@ -4,19 +4,19 @@
 #include <QOpenGLFunctions_4_1_Core>
 class GL : public QOpenGLFunctions_4_1_Core
 {
+    void setOpenGLContext(QOpenGLContext *context)
+    {
+      m_context=context;
+      initializeOpenGLFunctions();
+    }
 
   
   QOpenGLContext *m_context;
 public:
-  GL();
+  GL(QOpenGLContext *contex);
 
   QString getOpenGLInfo();
 
-  void setOpenGLContext(QOpenGLContext *context)
-  {
-    m_context=context;
-    initializeOpenGLFunctions();
-  }
 
     void testOpenGLCompatibility();
 
