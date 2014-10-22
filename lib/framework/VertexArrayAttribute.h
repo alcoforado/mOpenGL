@@ -11,10 +11,14 @@ public:
     std::string getName(){return Name;}
     int getStructOffset(){return StructOffset;}
     int getComponentSize() {return ComponentSize;}
-    VertexArrayAttribute(std::string name,int structOffset)
+    template<class VerticeData,class MemberType>
+    VertexArrayAttribute(std::string name,MemberType VerticeData::*member)
     {
-        Name=name;
-        StructOffset=structOffset;
+        VerticeData data;
+
+        this->Name=name;
+        this->StructOffset= ((void*) data.*member) - ((void*) &data);
+        this->ComponentSize=sizeof(MemberType);
     }
 };
 

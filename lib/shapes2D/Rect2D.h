@@ -2,8 +2,8 @@
 #define RECT2D_H
 #include <shapes2D/ITopology2D.h>
 #include <framework/Vector2.h>
-template<class VerticeData>
-class Rect2D : public ITopology2D<VerticeData>
+
+class Rect2D : public ITopology2D
 {
 private:
     Vector2 _p1,_p2;
@@ -18,12 +18,12 @@ public:
         return  TRIANGLES;
     }
 
-    virtual void WriteTopology(IArray<VerticeData> &vertices,IArray<Index> &indices) override
+    virtual void WriteTopology(ArraySelect<Vector2> &vertices,IArray<Index> &indices) override
     {
-        vertices[0].Position=glm::vec2(_p1[0],_p1[1]);
-        vertices[1].Position=glm::vec2(_p2[0],_p1[1]);
-        vertices[2].Position=glm::vec2(_p2[0],_p2[1]);
-        vertices[3].Position=glm::vec2(_p1[0],_p2[1]);
+        vertices[0]=glm::vec2(_p1[0],_p1[1]);
+        vertices[1]=glm::vec2(_p2[0],_p1[1]);
+        vertices[2]=glm::vec2(_p2[0],_p2[1]);
+        vertices[3]=glm::vec2(_p1[0],_p2[1]);
 
         indices[0]=0;
         indices[1]=1;

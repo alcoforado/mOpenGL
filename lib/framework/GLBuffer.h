@@ -1,8 +1,11 @@
 #ifndef GLBUFFER_H
 #define GLBUFFER_H
 #include <framework/ShapeBatch.h>
-#include <GL.h>
+#include <framework/GL.h>
 #include <framework/VertexArrayAttribute.h>
+
+
+
 
 template<class VerticeData>
 class GLBuffer
@@ -15,7 +18,7 @@ private:
     };
 
  public:
-    enum AccessHint {DYNAMIC=GL_DYNAMIC_DRAW,STATIC=GL_STATIC_DRAW};
+
 
 private:
     GL &_gl;
@@ -39,7 +42,7 @@ private:
     }
 
 public:
-    GLBuffer(GL &gl,const std::vector<VertexArrayAttribute> &attrs,AccessHint hint=DYNAMIC)
+    GLBuffer(GL &gl,const std::vector<VertexArrayAttribute> &attrs,GL::AccessHint hint=GL::DYNAMIC)
         :_gl(gl)
     {
 

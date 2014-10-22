@@ -1,10 +1,10 @@
 #ifndef ICOLORFILL_H
 #define ICOLORFILL_H
-
-class IColorFill
+#include<framework/ArraySelect.h>
+class ISolidColor
 {
 public:
-    IColorFill();
+    virtual void render(ArraySelect<Vector2>&position, )
 };
 
 #endif // ICOLORFILL_H

@@ -1,7 +1,7 @@
 #ifndef IMATERIAL_H
 #define IMATERIAL_H
 
-
+#include <utilities/IArray.h>
 template<class VerticeData>
 class IMaterial
 {

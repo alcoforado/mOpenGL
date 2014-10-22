@@ -14,23 +14,23 @@ INCLUDEPATH+=../
 INCLUDEPATH+=./shapes
 INCLUDEPATH+=$$PWD/../shared
 INCLUDEPATH+=$$PWD/shapes2D
-
-LIBS += -Wl,-rpath $$PWD/../shared  -lshared
+OBJECTS_DIR=./obj
+LIBS +=    -lshared
 LIBPATH += $$PWD/../shared
+
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = myOPenGL
-TEMPLATE = app
+TARGET = mOpenGL
+TEMPLATE = lib
 
 
 QMAKE_CXXFLAGS += -std=c++0x
 
-SOURCES += main.cpp\
+SOURCES +=\
     shapes/Rectangle3D.cpp \
     shapes/Triangle.cpp \
-    MainWindow.cpp \
-    WindowGL.cpp \
     utilities/RefArray.cpp \
     shapes/ITopology.cpp \
     utilities/EngineException.cpp \
@@ -40,10 +40,8 @@ SOURCES += main.cpp\
     SphericMovement.cpp \
     utilities/regionarray.cpp \
     shaders/ColorShader2D.cpp \
-    GL.cpp \
     shapes2D/ITopology2D.cpp \
     shapes2D/Rect2D.cpp \
-    shapes2D/Shape2D.cpp \
     framework/GLBuffer.cpp \
     framework/GLProgram.cpp \
     framework/VertexArrayAttribute.cpp \
@@ -51,14 +49,16 @@ SOURCES += main.cpp\
     framework/ShapeBatch.cpp \
     framework/Vector2.cpp \
     framework/Vector3.cpp \
-    framework/Vector4.cpp
+    framework/Vector4.cpp \
+    material/ArrayOfColors.cpp \
+    framework/GL.cpp \
+    framework/VerticeArray.cpp \
+    material/IColorFill.cpp
 
 HEADERS  += \
     shapes/Rectangle3D.h \
     globals.h \
     shapes/Triangle.h \
-    WindowGL.h \
-    MainWindow.h \
     ArrayColorMap.h \
     Camera.h \
     ICamera.h \
@@ -74,7 +74,6 @@ HEADERS  += \
     SphericMovement.h \
     shaders/ColorShader2D.h \
     utilities/regionarray.h \
-    GL.h \
     shapes2D/ITopology2D.h \
     shapes2D/Rect2D.h \
     shapes2D/Shape2D.h \
@@ -91,10 +90,14 @@ HEADERS  += \
     framework/Vector3.h \
     framework/Vector4.h \
     framework/BuffersMngr.h \
-    utilities/opointer.h
+    material/ArrayOfColors.h \
+    material/ColorsRepo.h \
+    framework/GL.h \
+    framework/ArraySelect.h \
+    material/IColorFill.h
 
 
-FORMS    += mainwindow.ui
+FORMS    +=
 
 INCLUDEPATH+=./
 

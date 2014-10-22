@@ -11,12 +11,15 @@ class GL : public QOpenGLFunctions_4_1_Core
     }
 
   
+
+
   QOpenGLContext *m_context;
 public:
   GL(QOpenGLContext *contex);
 
   QString getOpenGLInfo();
 
+  enum GLBufferAccessHint {DYNAMIC=GL_DYNAMIC_DRAW,STATIC=GL_STATIC_DRAW};
 
     void testOpenGLCompatibility();
 

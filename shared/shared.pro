@@ -13,12 +13,14 @@ DEFINES += SHARED_LIBRARY
 
 SOURCES += \
     Exception.cpp \
-    Path.cpp
+    Path.cpp \
+    FieldArray.cpp
 
 HEADERS +=\
         shared_global.h \
     Exception.h \
-    Path.h
+    Path.h \
+    opointer.h
 
 unix {
     target.path = /usr/lib

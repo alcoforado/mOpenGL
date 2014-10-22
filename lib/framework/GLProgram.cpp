@@ -1,5 +1,6 @@
 #include "GLProgram.h"
 #include <Exception.h>
+#include <iostream>
 GLProgram::GLProgram(GL &gl,std::string VertexShaderText,std::string FragShaderText)
     :_gl(gl)
 {
@@ -60,9 +61,10 @@ GLint GLProgram::CreateShader(std::string VerticeShaderText, ShaderType shaderTy
     GLint shader;
     GLint compileStatus;
     const char *source = VerticeShaderText.c_str();
-
+//    std::cout << "Compiling \n" << source;
     shader=_gl.glCreateShader(shaderType);
     _gl.glShaderSource(shader,1,&source,NULL);
+    _gl.glCompileShader(shader);
     _gl.glGetShaderiv(shader,GL_COMPILE_STATUS,&compileStatus);
     if (compileStatus == GL_FALSE) //Compilation Failed, throw exception with error
     {

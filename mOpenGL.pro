@@ -7,7 +7,9 @@
 TEMPLATE= subdirs
 SUBDIRS = lib \
           shared \
-          tools/TextToHeader
+          tools/TextToHeader \
+          Visualizer \
+          UnitTests
 	  
 
 

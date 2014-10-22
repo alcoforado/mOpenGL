@@ -2,7 +2,7 @@
 #define GLPROGRAM_H
 #include <string>
 #include <qopenglfunctions_4_1_core.h>
-#include <GL.h>
+#include <framework/GL.h>
 #include <framework/VertexArrayAttribute.h>
 #include <vector>
 class GLProgram

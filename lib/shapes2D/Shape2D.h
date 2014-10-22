@@ -6,24 +6,23 @@
 #include <framework/IMaterial.h>
 #include <framework/Vector2.h>
 template<class VerticeData,
-         class Topology2D=ITopology2D<VerticeData>,
-         class Material=IMaterial<VerticeData>>
-class Shape2D : IShape<VerticeData>
+         class Topology2D,
+         class Material>
+class Shape2D : IShape<Shader::VerticeData>
 {
 private:
     Topology2D &_topology;
     Material   &_material;
-
 public:
-    Shape2D(Topology2D &tp2D,Material &mat)
-        :_topology(tp2D),_material(mat)
+    Shape2D(Shader &shader,Topology2D &tp2D,Material &mat)
+        :_topology(tp2D),_material(mat),_shader(shader)
     {
 
-        //Vertify if VerticeData contain a member Position with type Vector2
-        static_assert(std::is_same<decltype(VerticeData::Position),Vector2>::value,
-                      "Expect VerticeData to have a member called Position of type Vector2");
 
     }
+
+    Topology2D& GetTopology(){return _topology;}
+    Material& GetMaterial(){return _material;}
 
 
     virtual TopologyType GetTopologyType() final
@@ -41,17 +40,12 @@ public:
         return _topology.nVertices();
     }
 
-    virtual void write(IArray<VerticeData> &vertices, IArray<int> &indices) final
+    virtual void write(IArray<VerticeData> &vertices, IArray<int> &indices)
     {
-        _topology.WriteTopology(vertices,indices);
-        _material.write(vertices);
+
     }
 
     virtual bool IsIndexed() final {return nIndices() == 0;}
-
-
-
-
 };
 
 #endif // SHAPE2D_H

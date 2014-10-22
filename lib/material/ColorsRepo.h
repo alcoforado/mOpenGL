@@ -1,3 +1,6 @@
+//Create from Color Tables in css
+#include <framework/Vector3.h>
+
 class ColorsRepo
 {
 
@@ -101,7 +104,8 @@ class ColorsRepo
   static Vector3 thistle(){return Vector3( 216/255.0,191/255.0,216/255.0);}
   static Vector3 plum(){return Vector3( 221/255.0,160/255.0,221/255.0);}
   static Vector3 violet(){return Vector3( 238/255.0,130/255.0,238/255.0);}
-  static Vector3 magenta/fuchsia(){return Vector3( 255/255.0,0/255.0,255/255.0);}
+  static Vector3 magenta(){return Vector3( 255/255.0,0/255.0,255/255.0);}
+  static Vector3 futchsia(){return Vector3( 255/255.0,0/255.0,255/255.0);}
   static Vector3 orchid(){return Vector3( 218/255.0,112/255.0,214/255.0);}
   static Vector3 mediumvioletred(){return Vector3( 199/255.0,21/255.0,133/255.0);}
   static Vector3 palevioletred(){return Vector3( 219/255.0,112/255.0,147/255.0);}
